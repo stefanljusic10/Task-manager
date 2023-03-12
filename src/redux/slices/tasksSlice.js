@@ -43,6 +43,7 @@ export const updateTask = (endpoint, id, modifiedTask) => async (dispatch) => {
     // UPDATE selected task and GET new data
     await API.put(`${endpoint}/${id}`, modifiedTask)
     dispatch(getTasks('task'))
+    localStorage.setItem('selectedTask', modifiedTask)
   } catch (error) {
     console.log(error);
   }
