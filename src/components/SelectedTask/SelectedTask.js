@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectSelectedTask } from '../../redux/slices/selectedTaskSlice'
+import { selectSelectedTask } from '../../redux/slices/tasksSlice'
 import './selectedTask.scss'
 import moment from 'moment'
 import { selectEmployees } from '../../redux/slices/employeesSlice'

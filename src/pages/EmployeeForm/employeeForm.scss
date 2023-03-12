@@ -71,8 +71,6 @@
         }
 
         & > div{
-            display: none;
-            
             & > div {
                 font-size: $fontSize-button;
                 padding-top: .5rem;
@@ -82,12 +80,6 @@
                 &:hover{
                     border-bottom: 1px solid $color-grey-dark;
                 }
-            }
-        }
-
-        &:hover{
-            & > div{
-                display: block;
             }
         }
     }

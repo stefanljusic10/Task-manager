@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
-import API from '../../utils/api'
+import API from '../../api/api'
 import { filters } from '../../utils/filters'
+import { updateTask } from './tasksSlice'
 
 const initialState = {
   data: [],
   dataCopy: []
+  // dataCopy saves list of all employees for the case when top 5 slices data
 }
 
 export const employeesSlice = createSlice({
@@ -40,14 +42,16 @@ export const employeesSlice = createSlice({
         });
     
         // reduce employees
-        const uniqueEmployees = allAssignedTasks.reduce((acc, val) => {
+        const uniqueIndexes = allAssignedTasks.reduce((acc, val) => {
           if (!acc.includes(val)) {
             acc.push(val)
           }
           return acc
-        }, []);
+        }, []).slice(0, 5)
 
-        const topFive = uniqueEmployees.map(uniqueID => state.data.find(emp => emp.id == uniqueID)).slice(0, 5)
+        const topFive = uniqueIndexes.map(uniqueID => {
+          return state.data.find(emp => emp.id == uniqueID)
+        })
         state.data = topFive
       }
       // by salary desc
@@ -107,10 +111,19 @@ export const updateEmployee = (endpoint, id, modifiedEmployee) => async (dispatc
   }
 }
 
-export const deleteEmployee = (endpoint, id) => async (dispatch) => {
+export const deleteEmployee = (endpoint, id, tasks) => async (dispatch) => {
   try {
-      await API.delete(`${endpoint}/${id}`)
-      dispatch(getEmployees('employees'))
+    await API.delete(`${endpoint}/${id}`)
+    dispatch(getEmployees('employees'))
+    
+    const tasksClone = JSON.parse(JSON.stringify(tasks))
+    // unassign deleted employee from tasks
+    for (let i = 0; i < tasksClone.length; i++) {
+      if(tasksClone[i].assignee.includes(Number(id))){
+        const modifiedTask = { ...tasksClone[i], assignee: tasksClone[i].assignee.filter(elem => elem !== Number(id)) }
+        dispatch(updateTask('task', tasks[i].id, modifiedTask))
+      }
+    }
   } catch (error) {
       console.log(error);
   }

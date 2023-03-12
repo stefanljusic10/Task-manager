@@ -1,9 +1,14 @@
 @import '../../style/variables';
+@import '../../style/mixins';
 
 .selectedTask{
     background-color: white;
     color: $color-grey-dark;
     padding: $padding-modal;
+
+    @include respond(bp-1024) {
+        height: 100vh;
+    }
 
     & > h2{
         font-size: $fontSize-heading;

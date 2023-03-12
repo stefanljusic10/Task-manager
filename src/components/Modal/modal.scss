@@ -1,4 +1,5 @@
 @import '../../style/variables';
+@import '../../style/mixins';
 
 .modal{
     position: absolute;
@@ -9,11 +10,19 @@
     background-color: rgba(black, .6);
     padding: $padding-modal-large;
 
+    @include respond(bp-1024) {
+        padding: 0;
+    }
+
     & > img{
         width: 5rem;
         position: absolute;
         top: 4rem;
         right: 4rem;
         cursor: pointer;
+
+        @include respond(bp-1024) {
+            padding: 0;
+        }
     }
 }

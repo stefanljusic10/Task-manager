@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './taskForm.scss'
 import { Formik, Form, Field } from "formik";
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,22 +6,20 @@ import * as Yup from "yup";
 import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import { convertDateToMiliseconds } from '../../utils/convertDateToMiliseconds';
-import moment from 'moment'
 import { selectEmployees } from '../../redux/slices/employeesSlice';
 import AssignedEmployee from '../../components/AssignedEmployee/AssignedEmployee';
 import { removeAssignedEmployee } from '../../utils/removeAssignedEmployee'
 import { assignTaskToEmployee } from '../../utils/assignTaskToEmployee';
 import { createTask, updateTask } from '../../redux/slices/tasksSlice';
+import { parseDate } from '../../utils/parseDate'
 
 const TaskForm = () => {
+    const [toggleTaskDropdown, setToggleTaskDropdown] = useState(false)
     const { id } = useParams()
     const navigate = useNavigate()
     const employeesList = useSelector(selectEmployees)
     const dispatch = useDispatch()
     const taskToUpdate = id ? JSON.parse(localStorage.getItem('selectedTask')) : null
-    
-    const dueDateValue = taskToUpdate ? 
-        moment(taskToUpdate?.dateOfBirth).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD')
 
     const formValidation = Yup.object().shape({
         title: Yup.string().required("This field is required"),
@@ -61,7 +59,7 @@ const TaskForm = () => {
                 <div>
                     <input 
                         type="date" 
-                        value={dueDateValue}
+                        value={taskToUpdate ? parseDate(values.dueDate) : undefined}
                         onChange={(e) => setFieldValue("dueDate", convertDateToMiliseconds(e.target.value))} 
                     />
                     {errors.dueDate && touched.dueDate ? <div>{errors.dueDate}</div> : <div></div>}
@@ -85,26 +83,28 @@ const TaskForm = () => {
                             })}
                         </ul>
                     </label>
-                    <div className='employeeForm__dropdown' type='button'>
+                    <div onClick={() => setToggleTaskDropdown(!toggleTaskDropdown)} className='employeeForm__dropdown' type='button'>
                         Assign to &darr;
-                        <div>
-                            {employeesList.map(assignee => {
-                                let unassigned = null
-                                const assigneeID = Number(assignee.id)
-                                if(values?.assignee.indexOf(assigneeID) === -1)
-                                    unassigned = assignee
-                                if(unassigned){
-                                    return (
-                                        <div 
-                                            key={unassigned.id}
-                                            onClick={() => assignTaskToEmployee(values.assignee, unassigned.id, setFieldValue)}
-                                        >
-                                            {unassigned.name}
-                                        </div>
-                                    )
-                                }
-                            })}
-                        </div>
+                        {toggleTaskDropdown &&
+                            <div>
+                                {employeesList.map(assignee => {
+                                    let unassigned = null
+                                    const assigneeID = Number(assignee.id)
+                                    if(values?.assignee.indexOf(assigneeID) === -1)
+                                        unassigned = assignee
+                                    if(unassigned){
+                                        return (
+                                            <div 
+                                                key={unassigned.id}
+                                                onClick={() => assignTaskToEmployee(values.assignee, unassigned.id, setFieldValue)}
+                                            >
+                                                {unassigned.name}
+                                            </div>
+                                        )
+                                    }
+                                })}
+                            </div>
+                        }
                     </div>
                     {errors.phone && touched.phone ? <div>{errors.phone}</div> : <div></div>}
                 </div>

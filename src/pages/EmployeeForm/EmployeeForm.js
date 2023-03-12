@@ -9,14 +9,18 @@ import Button from '../../components/Button/Button';
 import { convertDateToMiliseconds } from '../../utils/convertDateToMiliseconds';
 import moment from 'moment'
 import { nameLatinLettersRegex, fullNameRegex, phoneRegex, salaryRegex } from '../../utils/regexValidation';
+import { parseDate } from '../../utils/parseDate'
 
 const EmployeeForm = () => {
     const { id } = useParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const employeeToUpdate = id ? JSON.parse(localStorage.getItem('selectedEmployee')) : null
-    const dateOfBirthValue = employeeToUpdate ? 
-        moment(employeeToUpdate?.dateOfBirth).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD')
+
+    const parseDate = (dateValue) => {
+        if(employeeToUpdate)
+            return moment(dateValue).format("YYYY-MM-DD")
+    }
 
     const formValidation = Yup.object().shape({
         name: Yup.string().required("This field is required")
@@ -68,7 +72,7 @@ const EmployeeForm = () => {
                 <div>
                     <input 
                         type="date" 
-                        value={dateOfBirthValue}
+                        value={employeeToUpdate ? parseDate(values.dateOfBirth) : undefined}
                         onChange={(e) => setFieldValue("dateOfBirth", convertDateToMiliseconds(e.target.value))} 
                     />
                     {errors.dateOfBirth && touched.dateOfBirth ? <div>{errors.dateOfBirth}</div> : <div></div>}

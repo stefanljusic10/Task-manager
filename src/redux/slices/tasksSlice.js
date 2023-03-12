@@ -1,16 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
-import API from '../../utils/api'
+import API from '../../api/api'
 
 const initialState = {
-  data: []
+  data: [],
+  selectedTask: null
 }
 
-export const TasksSlice = createSlice({
+export const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
   reducers: {
     setTasks: (state, action) => {
         state.data = action.payload
+    },
+    setSelectedTask: (state, action) => {
+      state.value = action.payload
     }
   },
 })
@@ -51,8 +55,9 @@ export const deleteTask = (endpoint, id) => async (dispatch) => {
   }
 }
 
-export const { setTasks } = TasksSlice.actions
+export const { setTasks, setSelectedTask } = tasksSlice.actions
 
 export const selectTasks = (state) => state.tasks.data
+export const selectSelectedTask = (state) => state.selectedTask.value
 
-export default TasksSlice.reducer
+export default tasksSlice.reducer

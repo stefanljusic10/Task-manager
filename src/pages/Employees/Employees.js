@@ -37,7 +37,7 @@ const Employees = () => {
         <div>{emp.salary}</div>
         <div>
           <img onClick={() => goToSelectedEmployee(emp, navigate)} src={updateIcon} alt="edit" />
-          <img onClick={() => dispatch(deleteEmployee('employees', emp.id))} src={deleteIcon} alt="remove" />
+          <img onClick={() => dispatch(deleteEmployee('employees', emp.id, tasksList))} src={deleteIcon} alt="remove" />
         </div>
       </div>
     )

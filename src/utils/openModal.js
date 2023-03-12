@@ -1,5 +1,5 @@
 import { toggleModal } from "../redux/slices/modalSlice";
-import { setSelectedTask } from "../redux/slices/selectedTaskSlice";
+import { setSelectedTask } from "../redux/slices/tasksSlice";
 
 const openModal = (e, dispatch, task) => {
   if (e.target.tagName !== "IMG"){
