@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 import API from '../../api/api'
 import { FILTERS } from '../../utils/filters'
-import { updateTask } from './tasksSlice'
+import { getTasks } from './tasksSlice'
 import moment from 'moment'
 
 const initialState = {
   data: [],
-  dataCopy: []
-  // dataCopy saves list of all employees for the case when top 5 slices data
+  dataClone: []
+  // dataClone saves list of all employees for the case when top 5 slices data
 }
 
 export const employeesSlice = createSlice({
@@ -16,12 +16,12 @@ export const employeesSlice = createSlice({
   reducers: {
     setEmployees: (state, action) => {
       state.data = action.payload
-      state.dataCopy = action.payload
+      state.dataClone = action.payload
     },
     sortEmployees: (state, action) => {
       // show all employees
       if(action.payload.filterEmployees === FILTERS[0]){
-        state.data = state.dataCopy
+        state.data = state.dataClone
       }
       // top 5 with most tasks
       else if(action.payload.filterEmployees === FILTERS[1]){
@@ -61,9 +61,7 @@ export const employeesSlice = createSlice({
             acc.push(val)
           }
           return acc
-        }, [])
-
-        if(uniqueIndexes.length > 5) uniqueIndexes.slice(0, 5)
+        }, []).slice(0, 5)
 
         const topFive = uniqueIndexes.map(uniqueID => {
           return state.data.find(emp => emp.id == uniqueID)
@@ -130,22 +128,25 @@ export const updateEmployee = (endpoint, id, modifiedEmployee) => async (dispatc
 }
 
 export const deleteEmployee = (endpoint, id, tasks) => async (dispatch) => {
-  // DELETE selected employee and GET new data
-  // unassign deleted employee from all tasks, UPDATE tasks and GET new data
   try {
+    // deep tasks list clone
+    const tasksClone = JSON.parse(JSON.stringify(tasks))
+
+    // DELETE employee and GET tasks
     await API.delete(`${endpoint}/${id}`)
     dispatch(getEmployees('employees'))
     
-    // deep tasks list clone
-    const tasksClone = JSON.parse(JSON.stringify(tasks))
-    
-    // unassign deleted employee from tasks
+    // looping through assigned tasks to deleted employee
     for (let i = 0; i < tasksClone.length; i++) {
       if(tasksClone[i].assignee.includes(Number(id))){
+        // removing deleted employee from task and UPDATE task
         const modifiedTask = { ...tasksClone[i], assignee: tasksClone[i].assignee.filter(elem => elem !== Number(id)) }
-        dispatch(updateTask('task', tasks[i].id, modifiedTask))
+        await API.put(`task/${tasksClone[i].id}`, modifiedTask)
       }
     }
+    // after tasks are updated, GET new data
+    dispatch(getTasks('tasks'))
+    
   } catch (error) {
       console.log(error);
   }
@@ -154,6 +155,6 @@ export const deleteEmployee = (endpoint, id, tasks) => async (dispatch) => {
 export const { setEmployees, sortEmployees } = employeesSlice.actions
 
 export const selectEmployees = (state) => state.employees.data
-export const selectEmployeesTopFive = (state) => state.employees.topFive
+export const selectEmployeesClone = (state) => state.employees.dataClone
 
 export default employeesSlice.reducer

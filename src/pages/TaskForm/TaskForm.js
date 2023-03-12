@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import { convertDateToMiliseconds } from '../../utils/convertDateToMiliseconds';
-import { selectEmployees } from '../../redux/slices/employeesSlice';
+import { selectEmployeesClone } from '../../redux/slices/employeesSlice';
 import AssignedEmployee from '../../components/AssignedEmployee/AssignedEmployee';
 import { removeAssignedEmployee } from '../../utils/removeAssignedEmployee'
 import { assignTaskToEmployee } from '../../utils/assignTaskToEmployee';
@@ -19,7 +19,7 @@ const TaskForm = () => {
     const [toggleTaskDropdown, setToggleTaskDropdown] = useState(false)
     const { id } = useParams()
     const navigate = useNavigate()
-    const employeesList = useSelector(selectEmployees)
+    const employeesList = useSelector(selectEmployeesClone)
     const dispatch = useDispatch()
 
     // check if there is task to update or new task should be created
