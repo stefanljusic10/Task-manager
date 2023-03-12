@@ -46,6 +46,6 @@ src
 </pre>
 
 ## Additional functionalities
-1. Search bar - reusable component which helps in searching employees by name or tasks by title
-2. Employee dropdown - sort employees by their salaries or age
+1. Search bar - reusable component which helps searching employees by name or tasks by title
+2. Employee dropdown - sort employees by their salaries or age in ascending or descending order
 3. One task can be assigned to more employees
