@@ -7,41 +7,41 @@ Steps:
 
 ## Folder structure
 src\
-|_assets\
-|_components\
-|  |_AssignedEmployee\
-|  |_Button\
-|  |_DropdownEmployee\
-|  |_Header\
-|  |_Modal\
-|  |_SearchBar\
-|  |_SelectedTask\
-|_pages\
-|  |_EmployeeForm\
-|  |_Employees\
-|  |_TaskForm\
-|  |_Tasks\
-|_redux\
-|  |_slices\
-|  |_store.js\
-|_style\
-|  |_ _base.scss\
-|  |_ _mixins.scss\
-|  |_ _utils.scss\
-|  |_ _variables.scss\
-|_utils\
-|  |_api.js\
-|  |_ApiData.js\
-|  |_assignTaskToEmployee.js\
-|  |_convertDateToMiliseconds.js\
-|  |_filters.js\
-|  |_goToSelectedEmployee.js\
-|  |_openModal.js\
-|  |_regexValidation.js\
-|  |_removeAssigneeEmployee.js\
-|_App.js\
-|_app.scss\
-|_index.js
+|---assets\
+|---components\
+|  |---AssignedEmployee\
+|  |---Button\
+|  |---DropdownEmployee\
+|  |---Header\
+|  |---Modal\
+|  |---SearchBar\
+|  |---SelectedTask\
+|---pages\
+|  |---EmployeeForm\
+|  |---Employees\
+|  |---TaskForm\
+|  |---Tasks\
+|---redux\
+|  |---slices\
+|  |---store.js\
+|---style\
+|  |---_base.scss\
+|  |---_mixins.scss\
+|  |---_utils.scss\
+|  |---_variables.scss\
+|---utils\
+|  |---api.js\
+|  |---ApiData.js\
+|  |---assignTaskToEmployee.js\
+|  |---convertDateToMiliseconds.js\
+|  |---filters.js\
+|  |---goToSelectedEmployee.js\
+|  |---openModal.js\
+|  |---regexValidation.js\
+|  |---removeAssigneeEmployee.js\
+|---App.js\
+|---app.scss\
+|---index.js
 
 ## Additional functionalities
 1. Search bar - reusable component which helps in searching employees by name or tasks by title
