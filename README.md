@@ -6,41 +6,41 @@ Steps:
 2. npm start - run app
 
 ## Folder structure
-src__
-|_assets__
-|_components__
-|  |_AssignedEmployee__
-|  |_Button__
-|  |_DropdownEmployee__
-|  |_Header__
-|  |_Modal__
-|  |_SearchBar__
-|  |_SelectedTask__
-|_pages__
-|  |_EmployeeForm__
-|  |_Employees__
-|  |_TaskForm__
-|  |_Tasks__
-|_redux__
-|  |_slices__
-|  |_store.js__
-|_style__
-|  |_ _base.scss__
-|  |_ _mixins.scss__
-|  |_ _utils.scss__
-|  |_ _variables.scss__
-|_utils__
-|  |_api.js__
-|  |_ApiData.js__
-|  |_assignTaskToEmployee.js__
-|  |_convertDateToMiliseconds.js__
-|  |_filters.js__
-|  |_goToSelectedEmployee.js__
-|  |_openModal.js__
-|  |_regexValidation.js__
-|  |_removeAssigneeEmployee.js__
-|_App.js__
-|_app.scss__
+src\
+|_assets\
+|_components\
+|  |_AssignedEmployee\
+|  |_Button\
+|  |_DropdownEmployee\
+|  |_Header\
+|  |_Modal\
+|  |_SearchBar\
+|  |_SelectedTask\
+|_pages\
+|  |_EmployeeForm\
+|  |_Employees\
+|  |_TaskForm\
+|  |_Tasks\
+|_redux\
+|  |_slices\
+|  |_store.js\
+|_style\
+|  |_ _base.scss\
+|  |_ _mixins.scss\
+|  |_ _utils.scss\
+|  |_ _variables.scss\
+|_utils\
+|  |_api.js\
+|  |_ApiData.js\
+|  |_assignTaskToEmployee.js\
+|  |_convertDateToMiliseconds.js\
+|  |_filters.js\
+|  |_goToSelectedEmployee.js\
+|  |_openModal.js\
+|  |_regexValidation.js\
+|  |_removeAssigneeEmployee.js\
+|_App.js\
+|_app.scss\
 |_index.js
 
 ## Additional functionalities
