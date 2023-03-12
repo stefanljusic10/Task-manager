@@ -10,36 +10,36 @@ Steps:
 src
 |___assets
 |___components
-|  |___AssignedEmployee
-|  |___Button
-|  |___DropdownEmployee
-|  |___Header
-|  |___Modal
-|  |___SearchBar
-|  |___SelectedTask
+|   |___AssignedEmployee
+|   |___Button
+|   |___DropdownEmployee
+|   |___Header
+|   |___Modal
+|   |___SearchBar
+|   |___SelectedTask
 |___pages
-|  |___EmployeeForm
-|  |___Employees
-|  |___TaskForm
-|  |___Tasks
+|   |___EmployeeForm
+|   |___Employees
+|   |___TaskForm
+|   |___Tasks
 |___redux
-|  |___slices
-|  |___store.js
+|   |___slices
+|   |___store.js
 |___style
-|  |____base.scss
-|  |____mixins.scss
-|  |____utils.scss
-|  |____variables.scss
+|   |____base.scss
+|   |____mixins.scss
+|   |____utils.scss
+|   |____variables.scss
 |___utils
-|  |___api.js
-|  |___ApiData.js
-|  |___assignTaskToEmployee.js
-|  |___convertDateToMiliseconds.js
-|  |___filters.js
-|  |___goToSelectedEmployee.js
-|  |___openModal.js
-|  |___regexValidation.js
-|  |___removeAssigneeEmployee.js
+|   |___api.js
+|   |___ApiData.js
+|   |___assignTaskToEmployee.js
+|   |___convertDateToMiliseconds.js
+|   |___filters.js
+|   |___goToSelectedEmployee.js
+|   |___openModal.js
+|   |___regexValidation.js
+|   |___removeAssigneeEmployee.js
 |___App.js
 |___app.scss
 |___index.js
