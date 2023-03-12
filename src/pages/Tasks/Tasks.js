@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import openModal from '../../utils/openModal'
 import Button from '../../components/Button/Button'
 import SearchBar from '../../components/SearchBar/SearchBar'
+import { goToSelectedTask } from '../../utils/goToSelectedTask'
 
 const Tasks = () => {
   const [searchTask, setSearchTask] = useState('')
@@ -16,11 +17,6 @@ const Tasks = () => {
   const dispatch = useDispatch()
 
   const searchTaskMatched = tasksList.filter(task => task.title.toLowerCase().includes(searchTask.toLowerCase()))
-
-  const goToSelectedTask = (task) => {
-    navigate(`/task/form/id=${task.id}`)
-    localStorage.setItem('selectedTask', JSON.stringify(task))
-  }
 
   const renderTasks = searchTaskMatched.map(task => {
     return(
@@ -31,7 +27,7 @@ const Tasks = () => {
       >
         {task.title}
         <div>
-          <img onClick={() => goToSelectedTask(task)} src={updateIcon} alt="edit"/>
+          <img onClick={() => goToSelectedTask(task, navigate)} src={updateIcon} alt="edit"/>
           <img onClick={() => dispatch(deleteTask('task', task.id))} src={deleteIcon} alt="remove"/>
         </div>
       </div>

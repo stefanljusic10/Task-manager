@@ -30,6 +30,7 @@ export const getTasks = (endpoint) => async (dispatch) => {
 
 export const createTask = (endpoint, newTask) => async (dispatch) => {
   try {
+    // POST new task into api and GET new data
     await API.post(`${endpoint}`, newTask)
     dispatch(getTasks('task'))
   } catch (error) {
@@ -39,6 +40,7 @@ export const createTask = (endpoint, newTask) => async (dispatch) => {
 
 export const updateTask = (endpoint, id, modifiedTask) => async (dispatch) => {
   try {
+    // UPDATE selected task and GET new data
     await API.put(`${endpoint}/${id}`, modifiedTask)
     dispatch(getTasks('task'))
   } catch (error) {
@@ -48,6 +50,7 @@ export const updateTask = (endpoint, id, modifiedTask) => async (dispatch) => {
 
 export const deleteTask = (endpoint, id) => async (dispatch) => {
   try {
+    // DELETE selected task and GET new data
     await API.delete(`${endpoint}/${id}`)
     dispatch(getTasks('task'))
   } catch (error) {

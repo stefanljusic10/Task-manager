@@ -1,0 +1,9 @@
+@import './variables';
+
+.errorMsg{
+    color: $color-red;
+    font-size: $fontSize-button;
+    font-weight: normal;
+    padding-top: .5rem;
+    padding-left: .5rem;
+}

@@ -19,13 +19,14 @@ const Employees = () => {
   const navigate = useNavigate()
   const employeesList = useSelector(selectEmployees)
   const tasksList = useSelector(selectTasks)
-  const searchEmployeesMatched = employeesList.filter(emp => emp.name.toLowerCase().includes(searchEmployee.toLowerCase()))
+  
+  const searchEmployeesMatched = employeesList.filter(emp => emp?.name.toLowerCase().includes(searchEmployee.toLowerCase()))
 
+  // sorting employees on selected filter
   useEffect(() => {
     dispatch(sortEmployees({ filterEmployees, tasksList }))
   }, [filterEmployees])
   
-
   const renderEmployees = searchEmployeesMatched.map(emp => {
     const empBirthday = moment(emp.dateOfBirth).format("DD/MM/YYYY")
     return(

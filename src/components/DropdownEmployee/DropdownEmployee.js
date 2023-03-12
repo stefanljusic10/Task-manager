@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import './dropdownEmployee.scss'
-import { filters } from '../../utils/filters'
+import { FILTERS } from '../../utils/filters'
 
 const DropdownEmployee = ({ value, clickHandler }) => {
   const [toggleDropdown, setToggleDropdown] = useState(false)
 
-  const renderFilters = filters.map(fil => {
+  const renderFilters = FILTERS.map(fil => {
     return (
       <div onClick={(e) => clickHandler(e.target.innerText)} key={fil}>
         {fil}

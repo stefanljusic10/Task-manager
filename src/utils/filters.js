@@ -1,6 +1,6 @@
-export const filters = [
+export const FILTERS = [
     'show all',
-    '5 with most tasks',
+    'top 5 last month',
     'salary desc',
     'salary asc',
     'by age desc',

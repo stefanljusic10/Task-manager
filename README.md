@@ -39,16 +39,18 @@ src
 |   |___store.js
 |
 |___style
-|   |____base.scss
-|   |____mixins.scss
-|   |____utils.scss
-|   |____variables.scss
+|   |___ _base.scss
+|   |___ _errorMsg.scss
+|   |___ _mixins.scss
+|   |___ _utils.scss
+|   |___ _variables.scss
 |
 |___utils
 |   |___assignTaskToEmployee.js
 |   |___convertDateToMiliseconds.js
 |   |___filters.js
 |   |___goToSelectedEmployee.js
+|   |___goToSelectedTask.js
 |   |___openModal.js
 |   |___parseDate.js
 |   |___regexValidation.js

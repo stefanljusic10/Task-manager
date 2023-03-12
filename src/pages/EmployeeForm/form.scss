@@ -1,0 +1,40 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.form{
+    padding: $padding-main-desktop;
+    color: $color-grey-dark;
+
+    @include respond(bp-1024) {
+        padding: $padding-main-tablet;
+    }
+
+    @include respond(bp-768) {
+        padding: $padding-main-mobile;
+    }
+
+    &__box{
+        margin: 0 auto;
+        width: 50%;
+
+        @include respond(bp-768) {
+            width: 100%;
+        }
+
+        & > h2{
+            font-size: $fontSize-heading;
+        }
+
+        & > div{
+            margin-bottom: 1rem;
+
+            & > input, textarea{
+                width: 100%;
+                border-radius: 10px;
+                border: 2px solid $color-grey-light;
+                padding: $padding-list;
+                font-size: $fontSize-button;
+            }
+        }
+    }
+}

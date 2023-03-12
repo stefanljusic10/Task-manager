@@ -1,0 +1,44 @@
+@import '../../style/variables';
+
+.form{
+    &__assignedEmp{
+        font-size: $fontSize-button;
+        font-weight: bold;
+
+        & > ul{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+    }
+
+    &__dropdown{
+        display: inline-block;
+        position: relative;
+        background-color: transparent;
+        order: 1px solid $color-grey-dark;
+        color: $color-grey-dark !important;
+        font-size: $fontSize-button;
+        padding: $padding-button;
+        order: none;
+        cursor: pointer;
+
+        & > img{
+            width: 1rem;
+        }
+
+        & > div{
+            & > div {
+                font-size: $fontSize-button;
+                padding-top: .5rem;
+                padding-left: .5rem;
+                cursor: pointer;
+
+                &:hover{
+                    border-bottom: 1px solid $color-grey-dark;
+                }
+            }
+        }
+    }
+}

@@ -10,6 +10,7 @@ const SelectedTask = () => {
     const employeesList = useSelector(selectEmployees)
 
     const taskDueDate = moment(selectedTask.dueDate).format("DD/MM/YYYY")
+    
     const taskAssignees = selectedTask.assignee.map(assignedID => {
         const assignedEmployee = employeesList.find(emp => emp.id == assignedID)
         if(assignedEmployee)
