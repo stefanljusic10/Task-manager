@@ -1,0 +1,27 @@
+@import '../../style/variables';
+
+.selectedTask{
+    background-color: white;
+    color: $color-grey-dark;
+    padding: $padding-modal;
+
+    & > h2{
+        font-size: $fontSize-heading;
+
+    }
+
+    &__info{
+        overflow: auto;
+    }
+
+    &__item{
+        & > *, & > * > *{
+            font-size: $fontSize-text;
+            list-style-position: inside;
+        }
+
+        &:not(:last-child){
+            margin-bottom: 1rem;
+        }
+    }
+}

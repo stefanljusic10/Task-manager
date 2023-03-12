@@ -1,0 +1,116 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.employees{
+    padding: $padding-main-desktop;
+
+    @include respond(bp-1024) {
+        padding: $padding-main-tablet;
+    }
+
+    @include respond(bp-768) {
+        padding: $padding-main-mobile;
+    }
+    
+    & > h2{
+        font-size: $fontSize-heading;
+        color: $color-grey-dark;
+    }
+
+    &__nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include respond(bp-768) {
+            flex-direction: column;
+            align-items: normal;
+        }
+    }
+
+    &__head{
+        display: flex;
+        @include respond(bp-1300) {
+            display: none;
+        }
+
+        & > div{
+            flex-basis: 100%;
+            text-align: center;
+            font-size: $fontSize-text;
+            padding: $padding-list;
+        }
+    }
+
+    &__container{
+        display: flex;
+        flex-direction: column;
+
+        @include respond(bp-1300) {
+            display: grid;
+            grid-template-columns: repeat(4, auto);
+            gap: 1rem;
+        }
+
+        @include respond(bp-900) {
+            grid-template-columns: repeat(2, auto);
+        }
+
+        @include respond(bp-768) {
+            grid-template-columns: auto;
+        }
+    }
+
+    &__person{
+        @include center-XY;
+        background-color: $color-grey-light;
+        cursor: pointer;
+
+        @include respond(bp-1300) {
+            flex-direction: column;
+        }
+        
+        & > div{
+            flex-basis: 100%;
+            padding: $padding-list;
+            font-size: $fontSize-text;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+
+            &:not(:first-child){
+                @include center-XY;
+            }
+
+            &:last-child{
+                @include respond(bp-1300) {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                & > img{
+                    width: 2rem;
+    
+                    @include respond(bp-1300) {
+                        width: 3rem;
+                    }
+    
+                    &:hover{
+                        transform: scale(1.2);
+                    }
+    
+                    &:not(:last-child){
+                        margin-right: 1rem;
+                    }
+                }
+
+            }
+
+        }
+
+        &:nth-child(2n){
+            background-color: $color-grey-lighter;
+        }
+    }
+}

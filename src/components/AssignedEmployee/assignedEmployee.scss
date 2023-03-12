@@ -1,0 +1,19 @@
+@import '../../style/variables';
+
+.assignedEmployee__person{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    list-style: none;
+    font-weight: normal;
+    font-size: $fontSize-button;
+    background-color: $color-grey-lighter;
+    border-radius: 10px;
+    padding: $padding-button;
+
+    & > img{
+        width: 2rem;
+        margin-left: 1rem;
+        cursor: pointer;
+    }
+}

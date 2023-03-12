@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import './app.scss'
+import Header from './components/Header/Header'
+import Employees from './pages/Employees/Employees'
+import Tasks from './pages/Tasks/Tasks'
+import Modal from './components/Modal/Modal'
+import ApiData from './utils/ApiData'
+import { useSelector } from 'react-redux'
+import { selectModal } from './redux/slices/modalSlice'
+import EmployeeForm from './pages/EmployeeForm/EmployeeForm'
+import TaskForm from './pages/TaskForm/TaskForm'
 
-function App() {
+const App = () => {
+  const toggleModal = useSelector(selectModal)
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <ApiData />
+      <div className='app'>
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<Employees />}></Route>
+          <Route path='/employee/form' element={<EmployeeForm />}></Route>
+          <Route path='/employee/form/id=:id' element={<EmployeeForm />}></Route>
+          <Route path="/tasks" element={<Tasks />}></Route>
+          <Route path="/task/form" element={<TaskForm />}></Route>
+          <Route path="/task/form/id=:id" element={<TaskForm />}></Route>
+        </Routes>
+        {toggleModal && <Modal />}
+      </div>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App

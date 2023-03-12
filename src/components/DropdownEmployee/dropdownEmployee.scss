@@ -1,0 +1,32 @@
+@import '../../style/variables';
+
+.dropdownEmployee{
+    position: relative;
+    min-width: 22rem;
+    background-color: white;
+    border: 1px solid $color-grey-dark;
+    padding: $padding-list;
+    font-size: $fontSize-button;
+    color: $color-grey-dark;
+    text-align: center;
+    cursor: pointer;
+
+    &__container{
+        position: absolute;
+        top: 4.3rem;
+        left: 0;
+        right: 0;
+        outline: 1px solid $color-grey-dark;
+        border-top: none;
+
+        & > div{
+            padding: .5rem;
+            background-color: white;
+            font-size: $fontSize-button;
+
+            &:hover{
+                background-color: $color-grey-lighter;
+            }
+        }
+    }
+}

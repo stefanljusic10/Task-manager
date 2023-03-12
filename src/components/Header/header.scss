@@ -1,0 +1,30 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.header{
+    padding: $padding-main-desktop;
+    background-color: $color-grey-lighter;
+    color: $color-grey-dark;
+
+    @include respond(bp-1024) {
+        padding: $padding-main-tablet;
+    }
+
+    @include respond(bp-768) {
+        padding: $padding-main-mobile;
+    }
+
+    & > ul{
+        
+        & > li{
+            list-style: none;
+            display: inline-block;
+            font-size: $fontSize-text;
+            cursor: pointer;
+
+            &:not(:last-child){
+                margin-right: 4rem;
+            }
+        }
+    }
+}

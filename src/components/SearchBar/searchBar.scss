@@ -1,0 +1,24 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.searchBar{
+    display: block;
+    padding: $padding-list;
+    font-size: $fontSize-button;
+    color: $color-grey-dark;
+    border: none;
+    border-bottom: 1px solid $color-grey-dark;
+
+    @include respond(bp-768) {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    &:focus{
+        outline: none;
+        
+        &::placeholder{
+            color: transparent;
+        }
+    }
+}

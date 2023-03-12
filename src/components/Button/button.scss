@@ -1,0 +1,31 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.button{
+    color: white;
+    border-radius: 10px;
+    padding: $padding-button;
+    border: none;
+    font-size: $fontSize-button;
+    cursor: pointer;
+
+    @include respond(bp-768) {
+        width: 100%;
+    }
+
+    &:hover{
+        transform: scale(1.05);
+    }
+}
+
+.btnGreen{
+    background-color: $color-green;
+}
+
+.btnBlue{
+    background-color: $color-blue;
+}
+
+.btnRed{
+    background-color: $color-red;
+}
