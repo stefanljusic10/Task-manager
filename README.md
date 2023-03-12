@@ -6,6 +6,7 @@ Steps:
 2. npm start - run app
 
 ## Folder structure
+<pre>
 src\
 |___assets\
 |___components\
@@ -42,6 +43,7 @@ src\
 |___App.js\
 |___app.scss\
 |___index.js
+</pre>
 
 ## Additional functionalities
 1. Search bar - reusable component which helps in searching employees by name or tasks by title
