@@ -5,6 +5,8 @@ Steps:
 1. npm i - install all necessary dependencies
 2. npm start - run app
 
+App is also deployed via Vercel -> https://task-manager-nine-black.vercel.app/
+
 ## Folder structure
 <pre>
 src
